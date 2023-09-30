@@ -78,7 +78,7 @@ Get ngrok link: ngrok http 333''')
         alphlist = command
         command=" "
       
-    elif command.startswith("alph") and alph and alphlist and alphsym:
+    elif command.startswith("alph") and alph and alphlist and alphsym and not command.startswith("alphsym"):
         command = command.replace("alph ", "")
         print(alphlist)
         repeater=0
@@ -110,9 +110,9 @@ Get ngrok link: ngrok http 333''')
                                     file.flush()
 
     elif command.startswith("clear"):
-        if os.name == 'nt':  # For Windows
+        if os.name == 'nt': 
           _ = os.system('cls')
-        else:  # For Linux and Mac
+        else:  
           _ = os.system('clear')
                                   
     elif command.startswith("number"):
@@ -159,7 +159,7 @@ Get ngrok link: ngrok http 333''')
             sys.exit()
     
     elif command.startswith("ymap"): 
-      # Define our target
+     
       target = input("Enter target IP or hostname: ")
       
       print("-" * 50)
@@ -168,7 +168,7 @@ Get ngrok link: ngrok http 333''')
       print("-" * 50)
       
       try:
-          for port in range(1, 1025):  # Scanning all well-known ports
+          for port in range(1, 1025):  
               s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
               socket.setdefaulttimeout(1)
               result = s.connect_ex((target, port))
